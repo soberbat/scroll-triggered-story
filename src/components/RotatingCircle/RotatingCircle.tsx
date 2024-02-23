@@ -31,7 +31,7 @@ const RotatingCircle: FC<IRotatingCircle> = ({ scrollProgress }) => {
     <S.Container translate={translate}>
       <S.TransformContainer currentSegment={currentSegment}>
         {Segments.map(({ name, style }, i) => (
-          <S.Segment isActive={i === currentSegment} style={style}>
+          <S.Segment key={i} isActive={i === currentSegment} style={style}>
             <S.InnerSegmentContainer currentSegment={currentSegment}>
               <S.RotatedSquare />
               <S.Name>{name}</S.Name>

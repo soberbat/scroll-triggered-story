@@ -11,8 +11,8 @@ const Corners: React.FC<CornerProps> = ({ className }) => {
 
   return (
     <Container className={className}>
-      {positionConfig.map((pos) => (
-        <CornerWrap position={pos}>
+      {positionConfig.map((pos, i) => (
+        <CornerWrap key={i} position={pos}>
           <Corner />
         </CornerWrap>
       ))}
