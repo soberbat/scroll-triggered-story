@@ -1,8 +1,8 @@
 export default [
   {
-    name: "Don't",
-    style: { bottom: "12%", right: "60px", transform: "none" },
+    name: "History",
+    style: { bottom: "12%", right: "10%", transform: "none" },
   },
-  { name: "Try", style: { top: "50%", right: "-4.5%" } },
-  { name: "Reading", style: { top: "12%", right: "60px", transform: "none" } },
+  { name: "Origins", style: { top: "50%", right: "-3.7%" } },
+  { name: "Symbols", style: { top: "11%", right: "11%", transform: "none" } },
 ];

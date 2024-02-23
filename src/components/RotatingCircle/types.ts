@@ -16,7 +16,7 @@ export enum SegmentThreshold {
 }
 
 export interface IContainer {
-  left: MotionValue<number>;
+  translate: MotionValue<number>;
 }
 
 export interface ISegment {

@@ -1,14 +1,8 @@
 import styled, { css } from "styled-components";
-
-export enum CPos {
-  TOP_LEFT = "top-left",
-  TOP_RIGHT = "top-right",
-  BOTTOM_LEFT = "bottom-left",
-  BOTTOM_RIGHT = "bottom-right",
-}
+import { CornerPosition } from "./types";
 
 interface IContainer {
-  position: CPos;
+  position: CornerPosition;
 }
 
 export const Container = styled.div`
@@ -17,7 +11,7 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const Corner = styled.div<IContainer>(
+export const CornerWrap = styled.div<IContainer>(
   ({ position }) => css`
     position: absolute;
     width: 6px;
@@ -26,27 +20,27 @@ export const Corner = styled.div<IContainer>(
     align-items: center;
     justify-content: center;
 
-    ${position === CPos.TOP_LEFT &&
+    ${position === CornerPosition.TOP_LEFT &&
     css`
       top: 0;
       left: 0;
     `}
 
-    ${position === CPos.TOP_RIGHT &&
+    ${position === CornerPosition.TOP_RIGHT &&
     css`
       top: 0;
       right: 0;
       rotate: 90deg;
     `}
 
-    ${position === CPos.BOTTOM_LEFT &&
+    ${position === CornerPosition.BOTTOM_LEFT &&
     css`
       bottom: 0;
       left: 0;
       rotate: -90deg;
     `}
 
-    ${position === CPos.BOTTOM_RIGHT &&
+    ${position === CornerPosition.BOTTOM_RIGHT &&
     css`
       bottom: 0;
       right: 0;

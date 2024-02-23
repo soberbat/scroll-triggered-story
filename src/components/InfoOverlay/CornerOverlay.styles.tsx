@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import Corners from "../Corner/Corners";
+import { mediaLarge } from "@/utils/media";
+import css from "styled-jsx/css";
 
 export const Container = styled.div`
   width: 100vw;
@@ -16,9 +18,13 @@ export const InnerContainer = styled.div`
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  padding: 1%;
+  padding: 3%;
 
   position: relative;
+
+  ${mediaLarge(css`
+    padding: 1%;
+  `)}
 `;
 
 export const InfoOverlayCorners = styled(Corners)`

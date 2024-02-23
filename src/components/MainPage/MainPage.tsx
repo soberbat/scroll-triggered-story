@@ -1,6 +1,6 @@
 "use client";
 import { useCallback, useRef, useState } from "react";
-import * as S from "./InfoPage.styles";
+import * as S from "./MainPage.styles";
 import {
   useMotionValueEvent,
   useScroll,
@@ -14,18 +14,22 @@ import InfoOverlay from "../InfoOverlay/CornerOverlay";
 
 import Corners from "../Corner/Corners";
 import TextOverlay from "../TextOverlay/TextOverlay";
+import isMobileDevice from "@/utils/isMobileDevice";
+import { INITIAL_BAR_HEİGHT } from "@/utils/appConfig";
 
 const InfoPage = () => {
+  const isMobile = isMobileDevice();
   const rootRef = useRef(null);
   const [barScale, setBarScale] = useState(0);
   const scrollConfig = { container: rootRef };
   const { scrollY, scrollYProgress } = useScroll(scrollConfig);
-  const HScale = useSpringyTransform([0.15, 0.16], [1, 4], scrollYProgress);
-  const OScale = useSpringyTransform([0.42, 0.43], [1, 4], scrollYProgress);
-  const SScale = useSpringyTransform([0.78, 0.79], [1, 4], scrollYProgress);
-  const BGScale = useTransform(scrollYProgress, [0, 1], [120, 135]);
+  const sOutput = isMobile ? [1, 2] : [1, 4];
+  const HScale = useSpringyTransform([0.15, 0.16], sOutput, scrollYProgress);
+  const OScale = useSpringyTransform([0.42, 0.43], sOutput, scrollYProgress);
+  const SScale = useSpringyTransform([0.78, 0.79], sOutput, scrollYProgress);
+  const BGScale = useTransform(scrollYProgress, [0, 1], [110, 145]);
   const backgroundSize = `${BGScale.get()}%`;
-  const height = `${6 + barScale}%`;
+  const height = `${INITIAL_BAR_HEİGHT + barScale}%`;
 
   const getScale = useCallback((v: number) => setBarScale(v * 100), []);
   useMotionValueEvent(scrollYProgress, "change", getScale);
@@ -44,7 +48,7 @@ const InfoPage = () => {
         <S.Container
           ref={rootRef}
           transition={infoFlowConfig}
-          animate={{ backgroundSize }}
+          // animate={{ backgroundSize }}
         >
           <S.ScrollContainer />
         </S.Container>
@@ -53,7 +57,14 @@ const InfoPage = () => {
           {[HScale, OScale, SScale].map((scale, index) => (
             <S.Box key={index} style={{ scale }}>
               <S.QuestionMark>
-                Who doesn't love a little bit of blur?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Sapiente inventore dolor quod eligendi aperiam debitis.
+                Dignissimos iste assumenda mollitia fuga id, excepturi nisi
+                ipsam omnis voluptas exercitationem, repellendus facilis
+                asperiores? Saepe, nisi! Ea perspiciatis illum neque illo nobis
+                reiciendis tenetur delectus, magnam eius error, ullam ex
+                pariatur doloremque cupiditate fuga reprehenderit? Quam fugiat
+                aperiam iusto at est accusamus dolorem nostrum.
               </S.QuestionMark>
               <Corners />
             </S.Box>

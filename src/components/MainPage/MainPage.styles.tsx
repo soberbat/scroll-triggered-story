@@ -1,7 +1,10 @@
+import { mediaLarge } from "@/utils/media";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import css from "styled-jsx/css";
 
-export const Container = styled(motion.div).attrs({})`
+export const Container = styled(motion.div)`
+  font-family: "Inconsolata", monospace;
   position: fixed;
   top: 0;
   right: 0;
@@ -10,14 +13,20 @@ export const Container = styled(motion.div).attrs({})`
   height: 100vh;
   overflow: scroll;
   background-image: url("/overlay3.jpg");
-  background-size: 120%;
-  object-fit: scale-down;
+  background-repeat: no-repeat;
+  object-fit: fill;
+  background-size: 450%;
   background-position: center;
-  font-family: "Inconsolata", monospace;
 
   &::-webkit-scrollbar {
     display: none;
   }
+
+  ${mediaLarge(css`
+    background-size: 120%;
+    object-fit: scale-down;
+    background-position: center;
+  `)}
 `;
 
 export const InnerContainer = styled(motion.div)`
@@ -29,9 +38,13 @@ export const InnerContainer = styled(motion.div)`
   left: 0;
   display: flex;
   align-items: center;
-  padding-left: 20rem;
   flex-direction: column;
-  gap: 83vh;
+  gap: 75vh;
+
+  ${mediaLarge(css`
+    padding-left: 20rem;
+    gap: 83vh;
+  `)}
 `;
 
 export const ScrollContainer = styled(motion.div)`
@@ -39,13 +52,17 @@ export const ScrollContainer = styled(motion.div)`
 `;
 
 export const ScrollBar = styled(motion.div)`
-  width: 0.18%;
+  width: 0.8%;
   position: fixed;
   top: 0;
   background-color: #cec8be;
   height: 100%;
   right: 0;
   z-index: 9;
+
+  ${mediaLarge(css`
+    width: 0.18%;
+  `)}
 `;
 
 export const ProgresBar = styled(motion.div)`
@@ -55,10 +72,10 @@ export const ProgresBar = styled(motion.div)`
 `;
 
 export const Box = styled(motion.div)`
-  width: 10vw;
-  height: 20vh;
-  background: rgba(24, 24, 24, 0.267);
-  backdrop-filter: blur(4px);
+  width: 40vw;
+  height: 30vh;
+  background: rgba(24, 24, 24, 0.522);
+  backdrop-filter: blur(6px);
   text-align: center;
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -66,6 +83,13 @@ export const Box = styled(motion.div)`
   position: relative;
   justify-content: center;
   overflow: hidden;
+
+  ${mediaLarge(css`
+    width: 10vw;
+    height: 20vh;
+    backdrop-filter: blur(4px);
+    background: rgba(24, 24, 24, 0.267);
+  `)}
 `;
 
 export const QuestionMark = styled.div`
@@ -78,12 +102,15 @@ export const QuestionMark = styled.div`
   align-items: center;
   justify-content: center;
   left: 0;
+  color: white;
   position: absolute;
   padding: 1rem;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 10%;
+  text-align: justify;
   filter: blur(1px);
+
+  ${mediaLarge(css`
+    filter: blur(1px);
+  `)}
 `;
 
 export const AnimationContainer = styled(motion.div).attrs({

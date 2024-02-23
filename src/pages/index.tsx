@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inconsolata } from "next/font/google";
-import InfoPage from "@/components/InfoPage/InfoPage";
+import MainPage from "@/components/MainPage/MainPage";
 
 const inconsolata = Inconsolata({
   subsets: ["latin"],
@@ -18,7 +18,7 @@ export default function Home() {
         <link rel="icon" href="/app.svg" />
       </Head>
       <main className={inconsolata.className}>
-        <InfoPage />
+        <MainPage />
       </main>
     </>
   );
