@@ -11,9 +11,7 @@ import { infoFlowConfig } from "../../utils/springConfig";
 import RotatingCircle from "../RotatingCircle/RotatingCircle";
 import useSpringyTransform from "../../hooks/useSpringyTransform";
 import InfoOverlay from "../InfoOverlay/CornerOverlay";
-
 import Corners from "../Corner/Corners";
-import TextOverlay from "../TextOverlay/TextOverlay";
 import isMobileDevice from "@/utils/isMobileDevice";
 import { INITIAL_BAR_HEİGHT } from "@/utils/appConfig";
 
@@ -28,6 +26,7 @@ const InfoPage = () => {
   const OScale = useSpringyTransform([0.42, 0.43], sOutput, scrollYProgress);
   const SScale = useSpringyTransform([0.78, 0.79], sOutput, scrollYProgress);
   const BGScale = useTransform(scrollYProgress, [0, 1], [110, 145]);
+  const opacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
   const backgroundSize = `${BGScale.get()}%`;
   const height = `${INITIAL_BAR_HEİGHT + barScale}%`;
 
@@ -48,7 +47,7 @@ const InfoPage = () => {
         <S.Container
           ref={rootRef}
           transition={infoFlowConfig}
-          // animate={{ backgroundSize }}
+          animate={!isMobile && { backgroundSize }}
         >
           <S.ScrollContainer />
         </S.Container>
@@ -76,8 +75,10 @@ const InfoPage = () => {
         </S.ScrollBar>
 
         <RotatingCircle scrollProgress={scrollYProgress} />
-        <TextOverlay scrollProgress={scrollYProgress} />
+
         <InfoOverlay />
+
+        <S.ScrollDownIndicator style={{ opacity }} />
       </>
     </S.AnimationContainer>
   );

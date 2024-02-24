@@ -116,7 +116,7 @@ export const QuestionMark = styled.div`
 export const AnimationContainer = styled(motion.div).attrs({
   initial: { opacity: 0, filter: "blur(15px)" },
   animate: { opacity: 1, filter: "blur(0px)" },
-  transition: { duration: 1 },
+  transition: { duration: 0.3 },
 })`
   width: 100vw;
   height: 100vh;
@@ -124,4 +124,24 @@ export const AnimationContainer = styled(motion.div).attrs({
   top: 0;
   left: 0;
   position: fixed;
+`;
+
+export const ScrollDownIndicator = styled(motion.img).attrs({
+  src: "/arrow-down.svg",
+  animate: { y: -50, x: "-50%" },
+  initial: { y: 0, x: "-50%" },
+  transition: {
+    repeat: Infinity,
+    repeatType: "reverse",
+    ease: "easeInOut",
+    duration: 1.5,
+  },
+})`
+  position: fixed;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8vw;
+  height: 8vh;
+  z-index: 9;
 `;
